@@ -53,10 +53,9 @@ const timeline = [
   },
 ]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+function classNames(...classes: (string | undefined | null | boolean)[]): string {
+  return classes.filter(Boolean).join(' ');
 }
-
 export default function Example() {
   return (
     <div className="flow-root">
