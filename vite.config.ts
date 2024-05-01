@@ -6,6 +6,6 @@ export default defineConfig({
   base: '/calendar/',
   plugins: [react()],
   build: {
-    outDir: 'dist'
+    outDir: 'calendar'
   }
 })
