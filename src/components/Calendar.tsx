@@ -61,8 +61,8 @@ const meetings = [
   // More meetings...
 ]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+function classNames(...classes: (string | undefined | null | boolean)[]): string {
+  return classes.filter(Boolean).join(' ');
 }
 
 export default function Example() {
@@ -112,7 +112,11 @@ export default function Example() {
                   'mx-auto flex h-8 w-8 items-center justify-center rounded-full'
                 )}
               >
-                <time dateTime={day.date}>{day.date.split('-').pop().replace(/^0/, '')}</time>
+            <time dateTime={day.date}>
+  {day.date?.split('-').pop()?.replace(/^0/, '') || 'Default Date'}
+</time>
+
+
               </button>
             </div>
           ))}

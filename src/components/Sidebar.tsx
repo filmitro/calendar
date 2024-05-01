@@ -1,15 +1,15 @@
+import React, { ReactNode } from 'react';
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import {
   Bars3Icon,
   MinusIcon,
-  ChartPieIcon,
-  DocumentDuplicateIcon,
-  FolderIcon,
-  HomeIcon,
-  UsersIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
+
+interface SidebarProps {
+  children: ReactNode;
+}
 
 const navigation = [
   { name: 'Baden-Württemberg', href: '#', icon: MinusIcon, current: false },
@@ -29,16 +29,15 @@ const navigation = [
     { name: 'Schleswig-Holstein', href: '#', icon: MinusIcon, current: false },
     {  name: 'Thuringia', href: '#', icon: MinusIcon, current: false }
 ]
-const teams: any[] = [
-  
-]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+
+function classNames(...classes: (string | undefined | null | boolean)[]): string {
+  return classes.filter(Boolean).join(' ');
 }
 
-export default function Sidebar({ children }) {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+
+const Sidebar: React.FC<SidebarProps> = ({ children }) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <>
@@ -125,36 +124,6 @@ export default function Sidebar({ children }) {
                             ))}
                           </ul>
                         </li>
-                        <li>
-                          <div className="text-xs font-semibold leading-6 text-gray-400">States</div>
-                          <ul role="list" className="-mx-2 mt-2 space-y-1">
-                            {teams.map((team) => (
-                              <li key={team.name}>
-                                <a
-                                  href={team.href}
-                                  className={classNames(
-                                    team.current
-                                      ? 'bg-gray-50 text-indigo-600'
-                                      : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50',
-                                    'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
-                                  )}
-                                >
-                                  <span
-                                    className={classNames(
-                                      team.current
-                                        ? 'text-indigo-600 border-indigo-600'
-                                        : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600',
-                                      'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white'
-                                    )}
-                                  >
-                                    {team.initial}
-                                  </span>
-                                  <span className="truncate">{team.name}</span>
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </li>
                       </ul>
                     </nav>
                   </div>
@@ -199,36 +168,6 @@ export default function Sidebar({ children }) {
                     ))}
                   </ul>
                 </li>
-                <li>
-                  <div className="text-xs font-semibold leading-6 text-gray-400">States</div>
-                  <ul role="list" className="-mx-2 mt-2 space-y-1">
-                    {teams.map((team) => (
-                      <li key={team.name}>
-                        <a
-                          href={team.href}
-                          className={classNames(
-                            team.current
-                              ? 'bg-gray-50 text-indigo-600'
-                              : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50',
-                            'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
-                          )}
-                        >
-                          <span
-                            className={classNames(
-                              team.current
-                                ? 'text-indigo-600 border-indigo-600'
-                                : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600',
-                              'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white'
-                            )}
-                          >
-                            {team.initial}
-                          </span>
-                          <span className="truncate">{team.name}</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
                 <li className="-mx-6 mt-auto">
                  
                 </li>
@@ -253,3 +192,5 @@ export default function Sidebar({ children }) {
     </>
   )
 }
+
+export default Sidebar;
