@@ -7,8 +7,7 @@ import Calendar from './components/Calendar'
 function App() {
   return (
     <>
-    <Sidebar><Calendar></Calendar></Sidebar>
-      
+      <Sidebar><Calendar></Calendar></Sidebar>
     </>
   );
 }

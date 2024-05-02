@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import { Menu, Transition } from '@headlessui/react'
 import { EllipsisVerticalIcon } from '@heroicons/react/24/outline'
+import holydays_data from './HolydaysData'
 
 const days = [
   { date: '2021-12-27' },
@@ -47,28 +48,35 @@ const days = [
   { date: '2022-02-05' },
   { date: '2022-02-06' },
 ]
-const meetings = [
-  {
-    id: 1,
-    name: 'Leslie Alexander',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    start: '1:00 PM',
-    startDatetime: '2022-01-21T13:00',
-    end: '2:30 PM',
-    endDatetime: '2022-01-21T14:30',
-  },
-  // More meetings...
-]
 
 function classNames(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Example() {
+export default function Calendar() {
   return (
     <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gray-200">
-      <div className="md:pr-14">
+
+      <section className="md:pr-14 ">
+        <h2 className="text-base font-semibold leading-6 text-gray-900">Feiertage in Bavaria</h2>
+        <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
+          {holydays_data.map((meeting) => (
+            <li
+              key={meeting.id}
+              className="group flex items-center space-x-4 rounded-xl px-4 py-2 focus-within:bg-gray-100 hover:bg-gray-100"
+            >
+              <div className="flex-auto">
+                <p className="text-gray-900">{meeting.name}</p>
+                <p className="mt-0.5">
+                  {meeting.start}
+                </p>
+              </div>
+
+            </li>
+          ))}
+        </ol>
+      </section>
+      <div className="mt-12 md:mt-0 md:pl-14">
         <div className="flex items-center">
           <h2 className="flex-auto text-sm font-semibold text-gray-900">January 2022</h2>
           <button
@@ -112,9 +120,9 @@ export default function Example() {
                   'mx-auto flex h-8 w-8 items-center justify-center rounded-full'
                 )}
               >
-            <time dateTime={day.date}>
-  {day.date?.split('-').pop()?.replace(/^0/, '') || 'Default Date'}
-</time>
+                <time dateTime={day.date}>
+                  {day.date?.split('-').pop()?.replace(/^0/, '') || 'Default Date'}
+                </time>
 
 
               </button>
@@ -122,77 +130,6 @@ export default function Example() {
           ))}
         </div>
       </div>
-      <section className="mt-12 md:mt-0 md:pl-14">
-        <h2 className="text-base font-semibold leading-6 text-gray-900">
-          Schedule for <time dateTime="2022-01-21">January 21, 2022</time>
-        </h2>
-        <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
-          {meetings.map((meeting) => (
-            <li
-              key={meeting.id}
-              className="group flex items-center space-x-4 rounded-xl px-4 py-2 focus-within:bg-gray-100 hover:bg-gray-100"
-            >
-              <img src={meeting.imageUrl} alt="" className="h-10 w-10 flex-none rounded-full" />
-              <div className="flex-auto">
-                <p className="text-gray-900">{meeting.name}</p>
-                <p className="mt-0.5">
-                  <time dateTime={meeting.startDatetime}>{meeting.start}</time> -{' '}
-                  <time dateTime={meeting.endDatetime}>{meeting.end}</time>
-                </p>
-              </div>
-              <Menu as="div" className="relative opacity-0 focus-within:opacity-100 group-hover:opacity-100">
-                <div>
-                  <Menu.Button className="-m-2 flex items-center rounded-full p-1.5 text-gray-500 hover:text-gray-600">
-                    <span className="sr-only">Open options</span>
-                    <EllipsisVerticalIcon className="h-6 w-6" aria-hidden="true" />
-                  </Menu.Button>
-                </div>
-
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="py-1">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                              'block px-4 py-2 text-sm'
-                            )}
-                          >
-                            Edit
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(
-                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                              'block px-4 py-2 text-sm'
-                            )}
-                          >
-                            Cancel
-                          </a>
-                        )}
-                      </Menu.Item>
-                    </div>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
-            </li>
-          ))}
-        </ol>
-      </section>
     </div>
   )
 }
