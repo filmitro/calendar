@@ -13,21 +13,21 @@ interface SidebarProps {
 
 const navigation = [
   { name: 'Baden-Württemberg', href: '#', icon: MinusIcon, current: false },
-    { name: 'Bavaria', href: '#', icon: MinusIcon, current: false },
-    {  name: 'Berlin', href: '#', icon: MinusIcon, current: false },
-    {  name: 'Brandenburg', href: '#', icon: MinusIcon, current: false },
-    {  name: 'Bremen', href: '#', icon: MinusIcon, current: false },
-    { name: 'Hamburg', href: '#', icon: MinusIcon, current: false },
-    {  name: 'Hesse', href: '#', icon: MinusIcon, current: false },
-    { name: 'Lower Saxony', href: '#', icon: MinusIcon, current: false },
-    {  name: 'Mecklenburg-Vorpommern', href: '#', icon: MinusIcon, current: false },
-    {  name: 'North Rhine-Westphalia', href: '#', icon: MinusIcon, current: false },
-    {  name: 'Rhineland-Palatinate', href: '#', icon: MinusIcon, current: false },
-    {  name: 'Saarland', href: '#', icon: MinusIcon, current: false },
-    { name: 'Saxony', href: '#', icon: MinusIcon, current: false },
-    { name: 'Saxony-Anhalt', href: '#', icon: MinusIcon, current: false },
-    { name: 'Schleswig-Holstein', href: '#', icon: MinusIcon, current: false },
-    {  name: 'Thuringia', href: '#', icon: MinusIcon, current: false }
+  { name: 'Bavaria', href: '#', icon: MinusIcon, current: false },
+  { name: 'Berlin', href: '#', icon: MinusIcon, current: false },
+  { name: 'Brandenburg', href: '#', icon: MinusIcon, current: false },
+  { name: 'Bremen', href: '#', icon: MinusIcon, current: false },
+  { name: 'Hamburg', href: '#', icon: MinusIcon, current: false },
+  { name: 'Hesse', href: '#', icon: MinusIcon, current: false },
+  { name: 'Lower Saxony', href: '#', icon: MinusIcon, current: false },
+  { name: 'Mecklenburg-Vorpommern', href: '#', icon: MinusIcon, current: false },
+  { name: 'North Rhine-Westphalia', href: '#', icon: MinusIcon, current: false },
+  { name: 'Rhineland-Palatinate', href: '#', icon: MinusIcon, current: false },
+  { name: 'Saarland', href: '#', icon: MinusIcon, current: false },
+  { name: 'Saxony', href: '#', icon: MinusIcon, current: false },
+  { name: 'Saxony-Anhalt', href: '#', icon: MinusIcon, current: false },
+  { name: 'Schleswig-Holstein', href: '#', icon: MinusIcon, current: false },
+  { name: 'Thuringia', href: '#', icon: MinusIcon, current: false }
 ]
 
 
@@ -169,7 +169,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
                   </ul>
                 </li>
                 <li className="-mx-6 mt-auto">
-                 
+
                 </li>
               </ul>
             </nav>
@@ -185,9 +185,9 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
         </div>
 
         <main className="lg:pl-72">
-            <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-6">{/* Main area */} {children}</div>
+          <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-6">{/* Main area */} {children}</div>
         </main>
-       
+
       </div>
     </>
   )

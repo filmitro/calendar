@@ -1,7 +1,5 @@
-import { Fragment } from 'react'
+
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
-import { Menu, Transition } from '@headlessui/react'
-import { EllipsisVerticalIcon } from '@heroicons/react/24/outline'
 import holydays_data from './HolydaysData'
 
 const days = [
@@ -53,25 +51,26 @@ function classNames(...classes: (string | undefined | null | boolean)[]): string
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Calendar() {
+export default function Calendar({ selectedState }) {
+  const filteredHolidays = holydays_data.filter(holiday => holiday.state.includes(selectedState));
+
   return (
     <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gray-200">
 
       <section className="md:pr-14 ">
-        <h2 className="text-base font-semibold leading-6 text-gray-900">Feiertage in Bavaria</h2>
+        <h2 className="text-base font-semibold leading-6 text-gray-900">Feiertage in {selectedState}</h2>
         <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
-          {holydays_data.map((meeting) => (
+          {filteredHolidays.map((holiday, index) => (
             <li
-              key={meeting.id}
+              key={index}
               className="group flex items-center space-x-4 rounded-xl px-4 py-2 focus-within:bg-gray-100 hover:bg-gray-100"
             >
               <div className="flex-auto">
-                <p className="text-gray-900">{meeting.name}</p>
+                <p className="text-gray-900">{holiday.name}</p>
                 <p className="mt-0.5">
-                  {meeting.start}
+                  {holiday.date_24}
                 </p>
               </div>
-
             </li>
           ))}
         </ol>
@@ -123,8 +122,6 @@ export default function Calendar() {
                 <time dateTime={day.date}>
                   {day.date?.split('-').pop()?.replace(/^0/, '') || 'Default Date'}
                 </time>
-
-
               </button>
             </div>
           ))}
