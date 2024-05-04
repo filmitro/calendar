@@ -3,8 +3,9 @@ import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import {
   Bars3Icon,
-  MinusIcon,
+  PlayIcon,
   XMarkIcon,
+ 
 } from '@heroicons/react/24/outline'
 
 interface SidebarProps {
@@ -12,22 +13,22 @@ interface SidebarProps {
 }
 
 const navigation = [
-  { name: 'Baden-Württemberg', href: '#', icon: MinusIcon, current: false },
-  { name: 'Bayern', href: '#', icon: MinusIcon, current: false },
-  { name: 'Berlin', href: '#', icon: MinusIcon, current: false },
-  { name: 'Brandenburg', href: '#', icon: MinusIcon, current: false },
-  { name: 'Bremen', href: '#', icon: MinusIcon, current: false },
-  { name: 'Hamburg', href: '#', icon: MinusIcon, current: false },
-  { name: 'Hessen', href: '#', icon: MinusIcon, current: false },
-  { name: 'Niedersachsen', href: '#', icon: MinusIcon, current: false },
-  { name: 'Mecklenburg-Vorpommern', href: '#', icon: MinusIcon, current: false },
-  { name: 'Nordrhein-Westfalen', href: '#', icon: MinusIcon, current: false },
-  { name: 'Rheinland-Pfalz', href: '#', icon: MinusIcon, current: false },
-  { name: 'Saarland', href: '#', icon: MinusIcon, current: false },
-  { name: 'Sachsen', href: '#', icon: MinusIcon, current: false },
-  { name: 'Sachsen-Anhalt', href: '#', icon: MinusIcon, current: false },
-  { name: 'Schleswig-Holstein', href: '#', icon: MinusIcon, current: false },
-  { name: 'Thüringen', href: '#', icon: MinusIcon, current: false }
+  { name: 'Baden-Württemberg', href: '#', icon: PlayIcon, current: false },
+  { name: 'Bayern', href: '#', icon: PlayIcon, current: false },
+  { name: 'Berlin', href: '#', icon: PlayIcon, current: false },
+  { name: 'Brandenburg', href: '#', icon: PlayIcon, current: false },
+  { name: 'Bremen', href: '#', icon: PlayIcon, current: false },
+  { name: 'Hamburg', href: '#', icon: PlayIcon, current: false },
+  { name: 'Hessen', href: '#', icon: PlayIcon, current: false },
+  { name: 'Niedersachsen', href: '#', icon: PlayIcon, current: false },
+  { name: 'Mecklenburg-Vorpommern', href: '#', icon: PlayIcon, current: false },
+  { name: 'Nordrhein-Westfalen', href: '#', icon: PlayIcon, current: false },
+  { name: 'Rheinland-Pfalz', href: '#', icon: PlayIcon, current: false },
+  { name: 'Saarland', href: '#', icon: PlayIcon, current: false },
+  { name: 'Sachsen', href: '#', icon: PlayIcon, current: false },
+  { name: 'Sachsen-Anhalt', href: '#', icon: PlayIcon, current: false },
+  { name: 'Schleswig-Holstein', href: '#', icon: PlayIcon, current: false },
+  { name: 'Thüringen', href: '#', icon: PlayIcon, current: false }
 ];
 
 
@@ -185,7 +186,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, onStateSelect }) => {
             <span className="sr-only">Open sidebar</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
-          <div className="flex-1 text-sm font-semibold leading-6 text-gray-900">Choose state</div>
+          <div className="flex-1 text-sm font-semibold leading-6 text-gray-900">Wählen Sie ein Bundesland aus</div>
         </div>
 
         <main className="lg:pl-72">
