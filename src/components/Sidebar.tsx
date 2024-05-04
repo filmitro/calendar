@@ -3,32 +3,47 @@ import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import {
   Bars3Icon,
-  PlayIcon,
   XMarkIcon,
  
 } from '@heroicons/react/24/outline'
+import Bremen from '../assets/bremen.png'
+import Hamburg from '../assets/hamburg.png'
+import Bayern from '../assets/Bayern.png'
+import Berlin from '../assets/Berlin.png'
+import Brandenburg from '../assets/Brandenburg.png'
+import Hessen from '../assets/Hessen.png'
+import SachsenAnhalt from '../assets/Sachsen-Anhalt.png'
+import Saarland from '../assets/Saarland.png'
+import Sachsen from '../assets/Sachsen.png'
+import SchleswigHolstein from '../assets/Schleswig-Holstein.png'
+import MecklenburgVorpommern from '../assets/Mecklenburg-Vorpommern.png'
+import Niedersachsen from '../assets/Niedersachsen.png'
+import NordrheinWestfalen from '../assets/Nordrhein-Westfalen.png'
+import RheinlandPfalz from '../assets/Rheinland-Pfalz.png'
+import Thuringen from '../assets/Thuringen.png'
+import BadenWurttemberg from '../assets/baden_wurttemberg.png'
 
 interface SidebarProps {
   children: ReactNode;
 }
 
 const navigation = [
-  { name: 'Baden-Württemberg', href: '#', icon: PlayIcon, current: false },
-  { name: 'Bayern', href: '#', icon: PlayIcon, current: false },
-  { name: 'Berlin', href: '#', icon: PlayIcon, current: false },
-  { name: 'Brandenburg', href: '#', icon: PlayIcon, current: false },
-  { name: 'Bremen', href: '#', icon: PlayIcon, current: false },
-  { name: 'Hamburg', href: '#', icon: PlayIcon, current: false },
-  { name: 'Hessen', href: '#', icon: PlayIcon, current: false },
-  { name: 'Niedersachsen', href: '#', icon: PlayIcon, current: false },
-  { name: 'Mecklenburg-Vorpommern', href: '#', icon: PlayIcon, current: false },
-  { name: 'Nordrhein-Westfalen', href: '#', icon: PlayIcon, current: false },
-  { name: 'Rheinland-Pfalz', href: '#', icon: PlayIcon, current: false },
-  { name: 'Saarland', href: '#', icon: PlayIcon, current: false },
-  { name: 'Sachsen', href: '#', icon: PlayIcon, current: false },
-  { name: 'Sachsen-Anhalt', href: '#', icon: PlayIcon, current: false },
-  { name: 'Schleswig-Holstein', href: '#', icon: PlayIcon, current: false },
-  { name: 'Thüringen', href: '#', icon: PlayIcon, current: false }
+  { name: 'Baden-Württemberg', href: '#', icon: BadenWurttemberg, current: false },
+  { name: 'Bayern', href: '#', icon: Bayern, current: false },
+  { name: 'Berlin', href: '#', icon: Berlin, current: false },
+  { name: 'Brandenburg', href: '#', icon: Brandenburg, current: false },
+  { name: 'Bremen', href: '#', icon: Bremen, current: false },
+  { name: 'Hamburg', href: '#', icon: Hamburg, current: false },
+  { name: 'Hessen', href: '#', icon: Hessen, current: false },
+  { name: 'Niedersachsen', href: '#', icon: Niedersachsen, current: false },
+  { name: 'Nordrhein-Westfalen', href: '#', icon: NordrheinWestfalen, current: false },
+  { name: 'Mecklenburg-Vorpommern', href: '#', icon: MecklenburgVorpommern, current: false },
+  { name: 'Rheinland-Pfalz', href: '#', icon: RheinlandPfalz, current: false },
+  { name: 'Saarland', href: '#', icon: Saarland, current: false },
+  { name: 'Sachsen', href: '#', icon: Sachsen, current: false },
+  { name: 'Sachsen-Anhalt', href: '#', icon: SachsenAnhalt, current: false },
+  { name: 'Schleswig-Holstein', href: '#', icon: SchleswigHolstein, current: false },
+  { name: 'Thüringen', href: '#', icon: Thuringen, current: false }
 ];
 
 
@@ -116,7 +131,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, onStateSelect }) => {
                                     'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                                   )}
                                 >
-                                  <item.icon
+                                  <img src={item.icon}
                                     className={classNames(
                                       item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600',
                                       'h-6 w-6 shrink-0'
@@ -160,7 +175,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, onStateSelect }) => {
                             'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
                           )}
                         >
-                          <item.icon
+                          <img src={item.icon}
                             className={classNames(
                               item.current ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600',
                               'h-6 w-6 shrink-0'
