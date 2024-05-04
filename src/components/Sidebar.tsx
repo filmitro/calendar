@@ -13,30 +13,34 @@ interface SidebarProps {
 
 const navigation = [
   { name: 'Baden-Württemberg', href: '#', icon: MinusIcon, current: false },
-  { name: 'Bavaria', href: '#', icon: MinusIcon, current: false },
+  { name: 'Bayern', href: '#', icon: MinusIcon, current: false },
   { name: 'Berlin', href: '#', icon: MinusIcon, current: false },
   { name: 'Brandenburg', href: '#', icon: MinusIcon, current: false },
   { name: 'Bremen', href: '#', icon: MinusIcon, current: false },
   { name: 'Hamburg', href: '#', icon: MinusIcon, current: false },
-  { name: 'Hesse', href: '#', icon: MinusIcon, current: false },
-  { name: 'Lower Saxony', href: '#', icon: MinusIcon, current: false },
+  { name: 'Hessen', href: '#', icon: MinusIcon, current: false },
+  { name: 'Niedersachsen', href: '#', icon: MinusIcon, current: false },
   { name: 'Mecklenburg-Vorpommern', href: '#', icon: MinusIcon, current: false },
-  { name: 'North Rhine-Westphalia', href: '#', icon: MinusIcon, current: false },
-  { name: 'Rhineland-Palatinate', href: '#', icon: MinusIcon, current: false },
+  { name: 'Nordrhein-Westfalen', href: '#', icon: MinusIcon, current: false },
+  { name: 'Rheinland-Pfalz', href: '#', icon: MinusIcon, current: false },
   { name: 'Saarland', href: '#', icon: MinusIcon, current: false },
-  { name: 'Saxony', href: '#', icon: MinusIcon, current: false },
-  { name: 'Saxony-Anhalt', href: '#', icon: MinusIcon, current: false },
+  { name: 'Sachsen', href: '#', icon: MinusIcon, current: false },
+  { name: 'Sachsen-Anhalt', href: '#', icon: MinusIcon, current: false },
   { name: 'Schleswig-Holstein', href: '#', icon: MinusIcon, current: false },
-  { name: 'Thuringia', href: '#', icon: MinusIcon, current: false }
-]
+  { name: 'Thüringen', href: '#', icon: MinusIcon, current: false }
+];
 
 
 function classNames(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
+interface SidebarProps {
+  children: ReactNode;
+  onStateSelect: (state: string) => void;
+}
 
-const Sidebar: React.FC<SidebarProps> = ({ children }) => {
+const Sidebar: React.FC<SidebarProps> = ({ children, onStateSelect }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -102,8 +106,8 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
                           <ul role="list" className="-mx-2 space-y-1">
                             {navigation.map((item) => (
                               <li key={item.name}>
-                                <a
-                                  href={item.href}
+                                <button
+                                  onClick={() => onStateSelect(item.name)}
                                   className={classNames(
                                     item.current
                                       ? 'bg-gray-50 text-indigo-600'
@@ -119,7 +123,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
                                     aria-hidden="true"
                                   />
                                   {item.name}
-                                </a>
+                                </button>
                               </li>
                             ))}
                           </ul>
@@ -144,12 +148,12 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
                 <li>
                   <ul role="list" className="-mx-2 space-y-1">
-                    {navigation.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className={classNames(
-                            item.current
+                            {navigation.map((item) => (
+                              <li key={item.name}>
+                                <button
+                                  onClick={() => onStateSelect(item.name)}
+                                  className={classNames(
+                                    item.current
                               ? 'bg-gray-50 text-indigo-600'
                               : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50',
                             'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
@@ -163,7 +167,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
                             aria-hidden="true"
                           />
                           {item.name}
-                        </a>
+                        </button>
                       </li>
                     ))}
                   </ul>

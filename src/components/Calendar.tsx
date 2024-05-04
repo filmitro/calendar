@@ -47,12 +47,18 @@ const days = [
   { date: '2022-02-06' },
 ]
 
+
+
 function classNames(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Calendar({ selectedState }) {
+type SelectedStateType = string;
+
+export default function Calendar({ selectedState }: { selectedState:SelectedStateType}) {
+console.log("Calendar selectedState:", selectedState);  // Debug log
   const filteredHolidays = holydays_data.filter(holiday => holiday.state.includes(selectedState));
+  console.log("Filtered Holidays:", filteredHolidays); 
 
   return (
     <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gray-200">
